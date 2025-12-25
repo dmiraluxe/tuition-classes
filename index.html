@@ -1,224 +1,222 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Divya Mishra | Premium Tuition Classes</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Divya Mishra | Future-Ready Learning</title>
   
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
 
   <style>
     :root {
-      --glass: rgba(255, 255, 255, 0.8);
-      --grad: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
-      --dark: #0f172a;
+      --primary: #00f2ff;
+      --secondary: #7000ff;
+      --bg: #050505;
+      --card-bg: rgba(255, 255, 255, 0.05);
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    
     body {
-      font-family: 'Outfit', sans-serif;
-      background: #f8fafc;
-      color: var(--dark);
-      overflow-x: hidden;
-      scroll-behavior: smooth;
-    }
-
-    /* Floating WhatsApp */
-    .wa-float {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      background: #25d366;
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
       color: white;
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 30px;
-      box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
-      z-index: 1000;
-      transition: 0.3s;
+      overflow-x: hidden;
     }
-    .wa-float:hover { transform: scale(1.1) rotate(10deg); }
 
-    /* Hero Section with Animation */
+    /* Animated Background */
+    .bg-animation {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: radial-gradient(circle at 50% 50%, #1a1a2e 0%, #050505 100%);
+      z-index: -1;
+    }
+
+    /* Hero Section */
     .hero {
-      height: 90vh;
-      background: var(--grad);
+      height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
-      color: white;
-      clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
       padding: 20px;
     }
 
-    .hero h1 { font-size: 4rem; font-weight: 800; margin-bottom: 10px; }
-    .hero p { font-size: 1.5rem; opacity: 0.9; margin-bottom: 30px; }
+    .hero h1 {
+      font-family: 'Syncopate', sans-serif;
+      font-size: clamp(2rem, 8vw, 5rem);
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
 
-    /* Glass Cards */
-    .container { max-width: 1100px; margin: -50px auto 50px; padding: 20px; }
-    
-    .card-grid {
+    /* 3D Glass Cards */
+    .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 25px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      padding: 50px 10%;
     }
 
-    .glass-card {
-      background: var(--glass);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255,255,255,0.3);
+    .card-3d {
+      background: var(--card-bg);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 20px;
       padding: 40px;
-      border-radius: 24px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.05);
-      transition: 0.4s;
-      text-align: center;
+      backdrop-filter: blur(15px);
+      transform-style: preserve-3d;
+      transition: 0.3s;
+      cursor: pointer;
     }
 
-    .glass-card:hover {
-      transform: translateY(-10px);
-      background: white;
-      box-shadow: 0 30px 60px rgba(99, 102, 241, 0.15);
+    .card-3d:hover {
+      border-color: var(--primary);
+      box-shadow: 0 0 30px rgba(0, 242, 255, 0.2);
     }
 
-    .icon-circle {
-      width: 80px;
-      height: 80px;
-      background: var(--grad);
-      color: white;
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 30px;
-      margin: 0 auto 20px;
+    .card-content {
+      transform: translateZ(50px); /* This gives the 3D depth */
     }
 
-    /* Pricing & Payment */
-    .price-tag {
-      font-size: 2.5rem;
-      font-weight: 800;
-      color: #6366f1;
-      margin: 15px 0;
+    .icon {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      color: var(--primary);
     }
 
-    .pay-btn {
-      background: var(--dark);
-      color: white;
-      padding: 15px 30px;
+    /* Info Toggle - Engaging discovery */
+    .hidden-info {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease-out;
+      font-size: 0.9rem;
+      color: #ccc;
+      margin-top: 15px;
+    }
+
+    .card-3d.active .hidden-info {
+      max-height: 200px;
+    }
+
+    .btn-explore {
+      margin-top: 20px;
+      padding: 10px 25px;
+      background: transparent;
+      border: 2px solid var(--primary);
+      color: var(--primary);
       border-radius: 50px;
-      text-decoration: none;
-      display: inline-block;
-      font-weight: 600;
-      margin-top: 10px;
+      font-weight: bold;
+      cursor: pointer;
       transition: 0.3s;
     }
 
-    .pay-btn:hover { background: #4338ca; transform: scale(1.05); }
-
-    /* Sections */
-    section { padding: 100px 20px; }
-    .title { text-align: center; font-size: 2.5rem; margin-bottom: 50px; }
-
-    /* Footer */
-    footer { background: var(--dark); color: white; padding: 50px 20px; text-align: center; }
-
-    @media (max-width: 768px) {
-      .hero h1 { font-size: 2.5rem; }
+    .btn-explore:hover {
+      background: var(--primary);
+      color: black;
     }
+
+    /* UPI Button */
+    .upi-section {
+      text-align: center;
+      padding: 100px 20px;
+      background: rgba(112, 0, 255, 0.05);
+    }
+
+    .payment-card {
+      display: inline-block;
+      padding: 30px;
+      border-radius: 30px;
+      background: linear-gradient(135deg, #1e1e1e, #000);
+      border: 1px solid var(--secondary);
+    }
+
+    .float-wa {
+      position: fixed; bottom: 30px; right: 30px;
+      width: 65px; height: 65px; background: #25d366;
+      border-radius: 50%; display: flex; justify-content: center; align-items: center;
+      font-size: 30px; box-shadow: 0 0 20px rgba(37,211,102,0.5); z-index: 100;
+    }
+
   </style>
 </head>
 <body>
 
-  <a href="https://wa.me/917276328496" class="wa-float" target="_blank">
-    <i class="fab fa-whatsapp"></i>
-  </a>
+<div class="bg-animation"></div>
 
-  <header class="hero">
-    <div data-aos="zoom-in">
-      <h1>Divya Mishra</h1>
-      <p>Redefining Tuition for Classes 5 - 10</p>
-      <a href="#contact" class="pay-btn" style="background: white; color: var(--dark);">Start Learning Today</a>
-    </div>
-  </header>
+<a href="https://wa.me/917276328496" class="float-wa"><i class="fab fa-whatsapp"></i></a>
 
-  <div class="container">
-    <div class="card-grid">
-      <div class="glass-card" data-aos="fade-up">
-        <div class="icon-circle"><i class="fas fa-microscope"></i></div>
-        <h3>Concept Focused</h3>
-        <p>Moving beyond rote learning to deep understanding of Science & Maths.</p>
+<section class="hero">
+  <h1 data-aos="fade-up">DIVYA MISHRA</h1>
+  <p style="letter-spacing: 5px; color: var(--primary);">THE FUTURE OF LEARNING</p>
+  <i class="fas fa-chevron-down" style="margin-top: 50px; animation: bounce 2s infinite;"></i>
+</section>
+
+<div class="grid">
+  <div class="card-3d" data-tilt data-tilt-max="15" onclick="toggleCard(this)">
+    <div class="card-content">
+      <div class="icon"><i class="fas fa-atom"></i></div>
+      <h3>Smart Science</h3>
+      <p>Click to see how we teach.</p>
+      <div class="hidden-info">
+        We use 3D models and practical experiments to make Physics & Chemistry come alive. Every student gets a personalized growth map.
       </div>
-      <div class="glass-card" data-aos="fade-up" data-aos-delay="100">
-        <div class="icon-circle"><i class="fas fa-comments"></i></div>
-        <h3>Soft Skills</h3>
-        <p>Developing confidence, English speaking, and personality.</p>
-      </div>
-      <div class="glass-card" data-aos="fade-up" data-aos-delay="200">
-        <div class="icon-circle"><i class="fas fa-chart-line"></i></div>
-        <h3>Career Path</h3>
-        <p>Regular counselling for NEET, CA, and future goals.</p>
-      </div>
+      <button class="btn-explore">Explore <i class="fas fa-plus"></i></button>
     </div>
   </div>
 
-  <section id="fees">
-    <h2 class="title" data-aos="fade-down">Affordable Excellence</h2>
-    <div class="container">
-      <div class="card-grid">
-        <div class="glass-card" data-aos="flip-left">
-          <h3>State Board</h3>
-          <div class="price-tag">₹1,000</div>
-          <p>Monthly Tuition Fee</p>
-          <a href="upi://pay?pa=7276328496@upi&pn=Divya%20Mishra&am=1000&cu=INR" class="pay-btn">
-            <i class="fas fa-mobile-alt"></i> Pay via UPI
-          </a>
-        </div>
-        <div class="glass-card" data-aos="flip-left" data-aos-delay="100">
-          <h3>CBSE Board</h3>
-          <div class="price-tag">₹2,000</div>
-          <p>Monthly Tuition Fee</p>
-          <a href="upi://pay?pa=7276328496@upi&pn=Divya%20Mishra&am=2000&cu=INR" class="pay-btn">
-            <i class="fas fa-mobile-alt"></i> Pay via UPI
-          </a>
-        </div>
-        <div class="glass-card" data-aos="flip-left" data-aos-delay="200">
-          <h3>ICSE Board</h3>
-          <div class="price-tag">₹3,000</div>
-          <p>Monthly Tuition Fee</p>
-          <a href="upi://pay?pa=7276328496@upi&pn=Divya%20Mishra&am=3000&cu=INR" class="pay-btn">
-            <i class="fas fa-mobile-alt"></i> Pay via UPI
-          </a>
-        </div>
+  <div class="card-3d" data-tilt data-tilt-max="15" onclick="toggleCard(this)">
+    <div class="card-content">
+      <div class="icon"><i class="fas fa-brain"></i></div>
+      <h3>Mental Mastery</h3>
+      <p>Mindset matters more than marks.</p>
+      <div class="hidden-info">
+        Special sessions on confidence building, public speaking, and how to handle exam pressure. We build leaders, not just students.
       </div>
+      <button class="btn-explore">Explore <i class="fas fa-plus"></i></button>
     </div>
-  </section>
+  </div>
+</div>
 
-  <footer id="contact">
-    <h2 style="margin-bottom: 20px;">Ready to excel?</h2>
-    <p>Call or WhatsApp to schedule a demo session.</p>
-    <div style="margin: 30px 0;">
-      <a href="tel:+917276328496" style="color: white; font-size: 20px; text-decoration: none; margin: 0 20px;">
-        <i class="fas fa-phone"></i> +91 7276328496
-      </a>
+<section class="upi-section">
+  <h2 style="margin-bottom: 40px; font-family: 'Syncopate';">Instant Enrollment</h2>
+  <div class="payment-card" data-tilt>
+    <h3>Select Your Board</h3>
+    <div style="margin: 20px 0;">
+      <a href="upi://pay?pa=7276328496@upi&pn=Divya%20Mishra&am=1000&cu=INR" class="btn-explore" style="text-decoration: none; display: block; margin: 10px;">State Board (₹1000)</a>
+      <a href="upi://pay?pa=7276328496@upi&pn=Divya%20Mishra&am=2000&cu=INR" class="btn-explore" style="text-decoration: none; display: block; margin: 10px;">CBSE Board (₹2000)</a>
     </div>
-    <p style="opacity: 0.5;">© 2025 Divya Mishra Tuition Classes</p>
-  </footer>
+    <p style="font-size: 0.8rem; opacity: 0.6;">Directly opens GPay/PhonePe</p>
+  </div>
+</section>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-  <script>
-    AOS.init({
-      duration: 1000,
-      once: true
-    });
-  </script>
+<footer style="padding: 50px; text-align: center; opacity: 0.5;">
+  <p>CONTACT: +91 7276328496 | PUNE</p>
+</footer>
+
+<script>
+  // Initialize 3D Tilt Effect
+  VanillaTilt.init(document.querySelectorAll(".card-3d"), {
+    max: 15,
+    speed: 400,
+    glare: true,
+    "max-glare": 0.5,
+  });
+
+  // Toggle information on click
+  function toggleCard(card) {
+    card.classList.toggle('active');
+    const btn = card.querySelector('.btn-explore');
+    if(card.classList.contains('active')) {
+      btn.innerHTML = 'Close <i class="fas fa-minus"></i>';
+    } else {
+      btn.innerHTML = 'Explore <i class="fas fa-plus"></i>';
+    }
+  }
+</script>
+
 </body>
 </html>
